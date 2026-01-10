@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Alert Sent - HealthAssist+</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>✅ Emergency Alert Confirmed</h1>
+        <a href="/dashboard">Back to Dashboard</a>
+    </nav>
+
+    <div class="container">
+        <div class="emergency-success">
+            <h2>✅ Emergency Alert Sent Successfully!</h2>
+            <p style="font-size: 1.1rem; margin: 1rem 0;">
+                Your emergency contact has been notified.
+            </p>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 6px; text-align: left; margin: 1.5rem 0; color: #2c3e50;">
+                <p><strong>👤 Contact Notified:</strong> <%= name %></p>
+                <p><strong>📞 Contact Details:</strong> <%= contact %></p>
+                <p><strong>🕐 Alert Sent At:</strong> <%= new Date().toLocaleTimeString() %></p>
+            </div>
+
+            <div style="background: #d4edda; border: 1px solid #c3e6cb; padding: 1rem; border-radius: 6px; margin: 1.5rem 0;">
+                <p style="margin: 0; color: #155724;">
+                    ✅ Your emergency contact will receive notification and can respond to help.
+                </p>
+            </div>
+
+            <h3 style="color: #008b8b; margin-top: 2rem;">Next Steps:</h3>
+            <ul style="color: #2c3e50;">
+                <li><strong>📞 If in danger:</strong> Call emergency services (108) immediately</li>
+                <li><strong>📍 Provide location:</strong> Share your location with emergency responders</li>
+                <li><strong>🏥 Seek medical help:</strong> Go to nearest hospital if needed</li>
+                <li><strong>📞 Contact family:</strong> Inform other family members if possible</li>
+            </ul>
+
+            <a href="/dashboard" class="btn btn-primary">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

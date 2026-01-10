@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker - HealthAssist+</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>🔍 Symptom Checker</h1>
+        <a href="/dashboard">← Back to Dashboard</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h3>Select Your Symptoms</h3>
+            <p style="color: #666; margin-bottom: 1rem;">
+                ⚠️ <strong>Disclaimer:</strong> This tool provides informational guidance only and is NOT a medical diagnosis. 
+                Always consult a qualified healthcare professional for proper medical advice.
+            </p>
+
+            <form method="POST" action="/check-symptoms">
+                <div class="symptom-selector">
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="fever" id="fever">
+                        <label for="fever">🌡️ Fever</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="cough" id="cough">
+                        <label for="cough">🤧 Cough</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="sneezing" id="sneezing">
+                        <label for="sneezing">🤧 Sneezing</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="runny nose" id="runny-nose">
+                        <label for="runny-nose">👃 Runny Nose</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="body pain" id="body-pain">
+                        <label for="body-pain">😣 Body Pain</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="fatigue" id="fatigue">
+                        <label for="fatigue">😴 Fatigue</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="headache" id="headache">
+                        <label for="headache">🤕 Headache</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="vomiting" id="vomiting">
+                        <label for="vomiting">🤮 Vomiting</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="stomach pain" id="stomach-pain">
+                        <label for="stomach-pain">🤢 Stomach Pain</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="diarrhea" id="diarrhea">
+                        <label for="diarrhea">⚠️ Diarrhea</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="nausea" id="nausea">
+                        <label for="nausea">🌀 Nausea</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="dizziness" id="dizziness">
+                        <label for="dizziness">🌪️ Dizziness</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="itching" id="itching">
+                        <label for="itching">🔴 Itching</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="watery eyes" id="watery-eyes">
+                        <label for="watery-eyes">😢 Watery Eyes</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="chest pain" id="chest-pain">
+                        <label for="chest-pain">💔 Chest Pain</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="difficulty breathing" id="difficulty-breathing">
+                        <label for="difficulty-breathing">🫁 Difficulty Breathing</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="severe headache" id="severe-headache">
+                        <label for="severe-headache">⚡ Severe Headache</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="loss of consciousness" id="loss-consciousness">
+                        <label for="loss-consciousness">⚠️ Loss of Consciousness</label>
+                    </div>
+                    <div class="symptom-checkbox">
+                        <input type="checkbox" name="symptoms" value="severe bleeding" id="severe-bleeding">
+                        <label for="severe-bleeding">🩸 Severe Bleeding</label>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" style="margin-top: 1.5rem;">Check Symptoms</button>
+            </form>
+
+            <% if (results && results.length > 0) { %>
+                <div style="margin-top: 2rem;">
+                    <h4>📋 Results for: <%= symptoms.join(', ') %></h4>
+                    
+                    <% results.forEach((result, index) => { %>
+                        <div class="result <%= result.disease.includes('EMERGENCY') ? 'danger' : (result.disease.includes('Common') || result.disease.includes('Allergy')) ? 'safe' : 'warning' %>">
+                            <h4><%= result.disease %></h4>
+                            <p><strong>💡 Advice:</strong> <%= result.advice %></p>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="tips-box">
+            <h4>📚 Understanding Results</h4>
+            <ul>
+                <li>✅ <strong style="color: #27ae60;">Green (Safe):</strong> Likely common, non-serious conditions</li>
+                <li>⚠️ <strong style="color: #ff9800;">Yellow (Warning):</strong> Conditions requiring medical consultation</li>
+                <li>🚨 <strong style="color: #e74c3c;">Red (Emergency):</strong> Seek immediate medical attention</li>
+                <li><strong>⚠️ Important:</strong> This tool is for informational purposes only. Always consult a doctor for proper diagnosis.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Alert - HealthAssist+</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>🚨 Emergency Alert System</h1>
+        <a href="/dashboard">← Back to Dashboard</a>
+    </nav>
+
+    <div class="container">
+        <div class="emergency-card">
+            <h2>🆘 Emergency Alert System</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">
+                Tap below to send an emergency alert to your registered emergency contact.
+            </p>
+
+            <form method="POST" action="/send-emergency">
+                <div class="card-info">
+                    <strong>Your Emergency Contact will be notified:</strong>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                    <p style="margin: 0.5rem 0;"><strong>📝 Name:</strong> XXXXXX</p>
+                    <p style="margin: 0.5rem 0;"><strong>📞 Contact:</strong> XXXXXX</p>
+                </div>
+
+                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                    <p style="margin: 0; color: #856404;">
+                        ⚠️ <strong>Note:</strong> This will send an emergency notification to your registered contact immediately.
+                    </p>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; background-color: #e74c3c; color: white; padding: 1rem; font-size: 1.1rem; margin-top: 1rem; font-weight: bold;" onclick="return confirm('🚨 Send emergency alert? This action will notify your emergency contact.');">
+                    🚨 SEND EMERGENCY ALERT
+                </button>
+            </form>
+        </div>
+
+        <div class="tips-box">
+            <h4>🚨 When to Use Emergency Alert</h4>
+            <ul>
+                <li>❤️ Chest pain or difficulty breathing</li>
+                <li>🩸 Severe bleeding or injuries</li>
+                <li>🧠 Loss of consciousness or confusion</li>
+                <li>⚠️ Severe allergic reactions</li>
+                <li>💊 Overdose or poisoning</li>
+                <li>🔥 Accidents or traumatic situations</li>
+                <li>📞 Any life-threatening situation</li>
+            </ul>
+            
+            <h4 style="margin-top: 1.5rem;">💡 What to Do</h4>
+            <ul>
+                <li>1️⃣ If available, call emergency services (108 in India) immediately</li>
+                <li>2️⃣ Send emergency alert if safe to do so</li>
+                <li>3️⃣ Provide location and details to emergency responders</li>
+                <li>4️⃣ Stay calm and follow first aid if trained</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

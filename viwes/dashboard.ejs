@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HealthAssist+</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+            <h1>🏥 HealthAssist+ Dashboard</h1>
+            <div>
+                <a href="/symptom-checker">🔍 Symptom Checker</a>
+                <a href="/medicine-reminders">💊 Reminders</a>
+                <a href="/emergency">🚨 Emergency</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 style="color: #008b8b; margin-bottom: 30px;">Welcome, <%= user.name %>! 👋</h2>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>👤 Your Profile</h3>
+                <div class="card-info">
+                    <strong>Name:</strong> <%= user.name %>
+                </div>
+                <div class="card-info">
+                    <strong>Email:</strong> <%= user.email %>
+                </div>
+                <div class="card-info">
+                    <strong>Phone:</strong> <%= user.phone %>
+                </div>
+                <div class="card-info">
+                    <strong>Emergency Contact:</strong> <%= user.emergencyContact %>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📊 Quick Stats</h3>
+                <div class="card-info">
+                    <strong>Total Reminders:</strong> <%= reminders.length %>
+                </div>
+                <div class="card-info">
+                    <strong>Status:</strong> <span style="color: #27ae60; font-weight: bold;">✅ Active</span>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="/medicine-reminders" class="btn btn-primary">View All Reminders</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>⚡ Quick Actions</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <a href="/symptom-checker" class="btn btn-primary" style="text-decoration: none; text-align: center;">Check Symptoms</a>
+                    <a href="/medicine-reminders" class="btn btn-primary" style="text-decoration: none; text-align: center;">Add Medicine</a>
+                    <a href="/emergency" class="btn btn-primary" style="background-color: #e74c3c; text-decoration: none; text-align: center;">Emergency Alert</a>
+                </div>
+            </div>
+        </div>
+
+        <% if (reminders && reminders.length > 0) { %>
+            <div class="card">
+                <h3>💊 Active Reminders</h3>
+                <div class="med-list">
+                    <% reminders.slice(0, 5).forEach(reminder => { %>
+                        <div class="med-item">
+                            <div>
+                                <div class="med-name">💊 <%= reminder.medicineName %></div>
+                                <div class="med-time">
+                                    <strong>Dosage:</strong> <%= reminder.dosage %> | 
+                                    <strong>Time:</strong> <%= reminder.time %>
+                                    <% if (reminder.description) { %>
+                                        | <strong>Notes:</strong> <%= reminder.description %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        <% } %>
+
+        <div class="tips-box">
+            <h4>💡 Health Tips</h4>
+            <ul>
+                <li>✅ Check your symptoms regularly to stay informed</li>
+                <li>💊 Never miss your medicine reminders</li>
+                <li>🚨 Keep emergency contact info updated</li>
+                <li>📞 Save this app for quick access to healthcare assistance</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

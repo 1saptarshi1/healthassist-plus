@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Reminders - HealthAssist+</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>💊 Medicine Reminders</h1>
+        <a href="/dashboard">← Back to Dashboard</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h3>Add New Medicine Reminder</h3>
+
+            <form method="POST" action="/add-medicine" style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group" style="margin: 0;">
+                        <label>Medicine Name *</label>
+                        <input type="text" name="medicineName" placeholder="e.g., Aspirin" required>
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label>Dosage *</label>
+                        <input type="text" name="dosage" placeholder="e.g., 500mg" required>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group" style="margin: 0;">
+                        <label>Time *</label>
+                        <input type="time" name="time" required>
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label>Notes / Instructions</label>
+                        <input type="text" name="description" placeholder="Take with food, before bed, etc.">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">+ Add Reminder</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Active Reminders (<%= reminders.length %>)</h3>
+
+            <% if (reminders && reminders.length > 0) { %>
+                <div class="med-list">
+                    <% reminders.forEach(reminder => { %>
+                        <div class="med-item">
+                            <div>
+                                <div class="med-name">💊 <%= reminder.medicineName %></div>
+                                <div class="med-time">
+                                    <strong>🔹 Dosage:</strong> <%= reminder.dosage %> |
+                                    <strong>⏰ Time:</strong> <%= reminder.time %>
+                                    <% if (reminder.description) { %>
+                                        | <strong>📝 Notes:</strong> <%= reminder.description %>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <form method="POST" action="/delete-medicine/<%= reminder._id %>" style="display: inline;">
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this reminder?')">Delete</button>
+                            </form>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } else { %>
+                <p style="color: #666; text-align: center; padding: 2rem;">
+                    No medicine reminders yet. Add one above to get started! 💊
+                </p>
+            <% } %>
+        </div>
+
+        <div class="tips-box">
+            <h4>💡 Medicine Reminder Tips</h4>
+            <ul>
+                <li>✅ Set reminders for the exact time you take your medicine</li>
+                <li>📝 Add special notes (e.g., "Take with food", "Before sleep")</li>
+                <li>⏰ Check dashboard for upcoming reminders</li>
+                <li>🚨 Never skip important medications without consulting your doctor</li>
+                <li>📞 Keep emergency contact updated in case of reactions</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
