@@ -15,7 +15,7 @@
   --color-teal-300: rgba(50, 184, 198, 1);
   --color-teal-400: rgba(45, 166, 178, 1);
   --color-teal-500: rgba(33, 128, 141, 1);
-  --color-teal-600: rgb(190, 229, 234);
+  --color-teal-600: rgb(121, 197, 207);
   --color-teal-700: rgba(26, 104, 115, 1);
   --color-teal-800: rgba(41, 150, 161, 1);
   --color-red-400: rgba(255, 84, 89, 1);
@@ -731,11 +731,21 @@ select.form-control {
   border: 1px solid var(--color-border-secondary);
 }
 
-@font-face {
+/* @font-face {
   font-family: 'FKGroteskNeue';
   src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
     format('woff2');
+} */
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://your-domain.com/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
 }
+
 
 /* END PERPLEXITY DESIGN SYSTEM */
 /* HealthAssist+ Styling - Adapted to Design System */
