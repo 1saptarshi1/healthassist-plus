@@ -1,0 +1,38 @@
+{
+  "name": "healthassist-plus",
+  "version": "1.0.0",
+  "description": "Smart Healthcare Assistance Platform for Early Guidance & Emergency Support",
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "main": "app.js",
+
+  "homepage": "https://github.com/1saptarshi1/healthassist-plus#readme",
+  "bugs": {
+    "url": "https://github.com/1saptarshi1/healthassist-plus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1saptarshi1/healthassist-plus.git"
+  },
+
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "bcrypt": "^5.1.0",
+    "ejs": "^3.1.8",
+    "dotenv": "^16.0.3",
+    "body-parser": "^1.20.2",
+    "express-session": "^1.17.3"
+  },
+
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
